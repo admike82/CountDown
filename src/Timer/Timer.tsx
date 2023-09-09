@@ -9,9 +9,10 @@ import "./Timer.css";
 type propsType = {
   initMinutes: number;
   initSeconds: number;
+  message: string | null
 };
 
-function Timer({ initMinutes, initSeconds }: propsType) {
+function Timer({ initMinutes, initSeconds, message }: propsType) {
   const [minutes, setMinutes] = useState(initMinutes);
   const [seconds, setseconds] = useState(initSeconds);
   const intervalRef = useRef<number>();
@@ -44,7 +45,7 @@ function Timer({ initMinutes, initSeconds }: propsType) {
     <div className="timer-container">
       {minutes === 0 && seconds === 0 ? (
         <div className="start">
-          <span className="message">Let's go !</span>
+          <span className="message">{message || "Let's go !"}</span>
         </div>
       ) : (
         <CircularProgressbarWithChildren
