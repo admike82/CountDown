@@ -1,0 +1,21 @@
+:root {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: #21eaee;
+  background-color: transparent;
+}
+
+*, ::after, ::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111619;
+  display: flex;
+  place-items: center;
+}
+
