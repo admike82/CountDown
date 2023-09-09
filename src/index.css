@@ -14,7 +14,7 @@
 }
 
 body {
-  background-color: #111619;
+  /* background-color: #111619; */
   display: flex;
   place-items: center;
 }
