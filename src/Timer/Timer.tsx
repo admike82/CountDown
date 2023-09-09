@@ -42,23 +42,29 @@ function Timer({ initMinutes, initSeconds }: propsType) {
 
   return (
     <div className="timer-container">
-      <CircularProgressbarWithChildren
-        value={initMinutes * 60 + initSeconds - (minutes * 60 + seconds)}
-        maxValue={initMinutes * 60 + initSeconds}
-        strokeWidth={5}
-        styles={buildStyles({
-          pathColor: "#21eaee",
-          trailColor: "#fc4101"
-        })}
-      >
-        <div className="timer-content">
-          <span className="minutes">{minutes}</span>:
-          <span className="seconds">
-            {seconds < 10 && "0"}
-            {seconds}
-          </span>
+      {minutes === 0 && seconds === 0 ? (
+        <div className="start">
+          <span className="message">Let's go !</span>
         </div>
-      </CircularProgressbarWithChildren>
+      ) : (
+        <CircularProgressbarWithChildren
+          value={initMinutes * 60 + initSeconds - (minutes * 60 + seconds)}
+          maxValue={initMinutes * 60 + initSeconds}
+          strokeWidth={5}
+          styles={buildStyles({
+            pathColor: "#21eaee",
+            trailColor: "#fc4101",
+          })}
+        >
+          <div>
+            <span>{minutes}</span>:
+            <span>
+              {seconds < 10 && "0"}
+              {seconds}
+            </span>
+          </div>
+        </CircularProgressbarWithChildren>
+      )}
     </div>
   );
 }

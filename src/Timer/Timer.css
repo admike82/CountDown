@@ -1,4 +1,25 @@
-.timer-content {
+.timer-container {
   font-size: 5rem;
   font-weight: bolder;
+}
+.start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.message {
+  animation: zoom 300ms ease-in-out;
+  font-weight: normal;
+  font-style: italic;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(0,0);
+  }
+  100% {
+    transform: scale(1,1);
+  }
 }
