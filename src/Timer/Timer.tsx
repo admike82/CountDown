@@ -9,10 +9,18 @@ import "./Timer.css";
 type propsType = {
   initMinutes: number;
   initSeconds: number;
-  message: string | null
+  primary: string;
+  secondary: string;
+  message: string;
 };
 
-function Timer({ initMinutes, initSeconds, message }: propsType) {
+function Timer({
+  initMinutes,
+  initSeconds,
+  message,
+  primary,
+  secondary,
+}: propsType) {
   const [minutes, setMinutes] = useState(initMinutes);
   const [seconds, setseconds] = useState(initSeconds);
   const intervalRef = useRef<number>();
@@ -42,10 +50,10 @@ function Timer({ initMinutes, initSeconds, message }: propsType) {
   }, [minutes, seconds]);
 
   return (
-    <div className="timer-container">
+    <div className="timer-container" style={{ color: primary}}>
       {minutes === 0 && seconds === 0 ? (
         <div className="start">
-          <span className="message">{message || "Let's go !"}</span>
+          <span className="message">{message}</span>
         </div>
       ) : (
         <CircularProgressbarWithChildren
@@ -53,8 +61,8 @@ function Timer({ initMinutes, initSeconds, message }: propsType) {
           maxValue={initMinutes * 60 + initSeconds}
           strokeWidth={5}
           styles={buildStyles({
-            pathColor: "#21eaee",
-            trailColor: "#fc4101",
+            pathColor: primary ,
+            trailColor: secondary,
           })}
         >
           <div>
