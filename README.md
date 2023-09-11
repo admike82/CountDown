@@ -6,6 +6,8 @@ Par défaut le minuteur est paramétré de la manière suivante :
 - Couleur primaire = <span style="color:#21eaee">#21eaee</span>
 - Couleur secondaire = <span style="color:#fc4101">#fc4101</span>
 
+***la taille minimal d'affichage est de 300px de largeur et 300px de hauteur.***
+
 ## Personnalisation
 
 ### Timing
