@@ -40,8 +40,7 @@ function Timer({
     }, 1000);
     intervalRef.current = timer;
     return () => clearInterval(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [initMinutes, initSeconds]);
 
   useEffect(() => {
     if (minutes === 0 && seconds === 0) {
@@ -50,7 +49,7 @@ function Timer({
   }, [minutes, seconds]);
 
   return (
-    <div className="timer-container" style={{ color: primary}}>
+    <div className="timer-container" style={{ color: primary }}>
       {minutes === 0 && seconds === 0 ? (
         <div className="start">
           <span className="message">{message}</span>
@@ -61,7 +60,7 @@ function Timer({
           maxValue={initMinutes * 60 + initSeconds}
           strokeWidth={5}
           styles={buildStyles({
-            pathColor: primary ,
+            pathColor: primary,
             trailColor: secondary,
           })}
         >
