@@ -17,11 +17,30 @@
   font-style: italic;
 }
 
-@keyframes zoom {
+.blink {
+  animation: blinking 1s infinite;
+}
+
+@keyframes blinking {
   0% {
-    transform: scale(0,0);
+    opacity: 1;
+    /* color: attr(data-primary); */
+  }
+  50% {
+    opacity: 0;
+    /* color: attr(data-secondary); */
   }
   100% {
-    transform: scale(1,1);
+    opacity: 1;
+    /* color: attr(data-primary); */
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(0, 0);
+  }
+  100% {
+    transform: scale(1, 1);
   }
 }

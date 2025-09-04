@@ -12,6 +12,8 @@ type propsType = {
   primary: string;
   secondary: string;
   message: string;
+  blink: boolean;
+  audio: boolean;
 };
 
 function Timer({
@@ -20,10 +22,15 @@ function Timer({
   message,
   primary,
   secondary,
+  blink,
+  audio,
 }: propsType) {
   const [minutes, setMinutes] = useState(initMinutes);
   const [seconds, setseconds] = useState(initSeconds);
-  const intervalRef = useRef<number>();
+  const intervalRef = useRef<number>(0);
+
+  const urlSong = new URL("/Audio/Audio.mp3", import.meta.url);
+  const sound = new Audio(urlSong.href);
 
   useEffect(() => {
     let m = initMinutes;
@@ -45,14 +52,17 @@ function Timer({
   useEffect(() => {
     if (minutes === 0 && seconds === 0) {
       clearInterval(intervalRef.current);
+      if (audio) {
+        sound.play();
+      }
     }
-  }, [minutes, seconds]);
+  }, [minutes, seconds, audio]);
 
   return (
     <div className="timer-container" style={{ color: primary }}>
       {minutes === 0 && seconds === 0 ? (
-        <div className="start">
-          <span className="message">{message}</span>
+        <div className={`start`}>
+          <span className={`message ${blink ? "blink" : ""}`}>{message}</span>
         </div>
       ) : (
         <CircularProgressbarWithChildren
